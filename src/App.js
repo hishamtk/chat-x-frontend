@@ -6,7 +6,7 @@ import Auth from "layouts/Auth.js";
 
 // views without layouts
 
-import Index from "views/Index.js";
+import Landing from "views/Landing.js";
 
 
 const App = () => {
@@ -14,11 +14,11 @@ const App = () => {
     <>
       <Router>
         <Switch>
-
+        <Route path="/" exact component={Landing} />
       <Route path="/" component={Auth} />
       <Route path="/user" exact component={UserDashboard} />
 
-      <Route path="/" exact component={Index} />
+ 
       {/* add redirect for first page */}
       <Redirect from="*" to="/" />
           
