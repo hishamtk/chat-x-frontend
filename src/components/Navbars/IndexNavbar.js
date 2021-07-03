@@ -45,7 +45,7 @@ export default function Navbar(props) {
                
                 >
                   Login
-                  <span className="lg:hidden inline-block ml-2">Login</span>
+                 
                 </Link>
               </li>
 
@@ -55,7 +55,7 @@ export default function Navbar(props) {
 to="/register"               
                 >
                  Sign Up
-                  <span className="lg:hidden inline-block ml-2">Sign Up</span>
+               
                 </Link>
               </li>
 
