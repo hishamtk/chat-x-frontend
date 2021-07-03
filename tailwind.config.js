@@ -72,6 +72,13 @@ module.exports = {
         900: "#282E60",
       },
     },
+    screens: {
+      pc: "1450px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+    },
     extend: {
       zIndex: {
         "-10": "-10",

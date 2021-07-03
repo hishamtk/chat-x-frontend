@@ -3,7 +3,8 @@ import React from "react";
 function UserDashboard() {
   return (
     <>
-      <div className="h-screen flex flex-row">
+    <div className=" bg-white-150">
+    <div className="h-screen flex flex-row max-w-screen-pc mx-auto bg-white-50">
         <div className="w-14 flex bg-teal-500 flex-col justify-between  items-center">
           <div className="text-center">
             <img
@@ -237,6 +238,11 @@ function UserDashboard() {
           </div>
         </div>
       </div>
+
+
+    </div>
+
+
     </>
   );
 }
