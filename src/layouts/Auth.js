@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, } from "react-router-dom";
 
 // components
 
@@ -25,9 +25,9 @@ export default function Auth() {
             }}
           ></div>
           <Switch>
-            <Route path="/auth/login" exact component={Login} />
-            <Route path="/auth/register" exact component={Register} />
-            <Redirect from="/auth" to="/auth/login" />
+            <Route path="/login" exact component={Login} />
+            <Route path="/register" exact component={Register} />
+       
           </Switch>
           <FooterSmall absolute />
         </section>
