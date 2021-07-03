@@ -15,10 +15,10 @@ const App = () => {
       <Router>
         <Switch>
         <Route path="/" exact component={Landing} />
-      <Route path="/" component={Auth} />
+
       <Route path="/user" exact component={UserDashboard} />
 
- 
+      <Route path="/" component={Auth} />
       {/* add redirect for first page */}
       <Redirect from="*" to="/" />
           
