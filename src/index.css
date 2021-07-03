@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS */
+.swatch_1 {
+  background: #f9f8fb;
+}
+.swatch_2 {
+  background: #e5d4f3;
+}
+.swatch_3 {
+  background: #c5acda;
+}
+.swatch_4 {
+  background: #cbd0d7;
+}
+.swatch_5 {
+  background: #825da3;
+}
+
+.admin-bg {
+  background: #f6f6f7;
+}
+
+.main-bg {
+  background: linear-gradient(to bottom, #fbe7e9 0%, #9587da 100%);
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+
+  border-bottom: 5px solid black;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 50px solid transparent;
+  position: absolute;
+  top: -7px;
+  right: -70px;
+}
+.arrow-first {
+  border-top: 55px solid #63549c;
+}
+.arrow-second {
+  border-top: 55px solid #8c51aa;
+}
+.arrow-third {
+  border-top: 55px solid #ad4ad6;
+}
+
+.border-bottom {
+  border-bottom: 3px solid #5f529b;
+  border-radius: 2px;
+}
+
+.nav-height {
+  height: 70px;
+  border-radius: 2px;
+}
+
+.leftpx{
+  left: 105px;
+}
