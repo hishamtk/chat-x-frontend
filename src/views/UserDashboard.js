@@ -222,7 +222,7 @@ function UserDashboard() {
                   alt="..."
                 />
                 <div className=" flex flex-col space-y-1">
-                  <div className="bg-red-400 rounded p-5 ">
+                  <div className=" bg-black-squeeze-500 rounded p-5 ">
                     
                     some message textmessage textmessage textmessage textmessage
                     text
