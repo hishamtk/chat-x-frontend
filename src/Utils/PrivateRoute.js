@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: Component }) => {
   const { isAuth, loading } = authContext;
   return (
     <Route
-      rnder={(props) =>
+      render={(props) =>
         loading ? (
           <Spinner />
         ) : isAuth ? (

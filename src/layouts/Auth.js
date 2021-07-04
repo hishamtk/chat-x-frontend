@@ -5,6 +5,7 @@ import { Switch, Route, } from "react-router-dom";
 
 import Navbar from "components/Navbars/AuthNavbar.js";
 import FooterSmall from "components/Footers/FooterSmall.js";
+import Error from "views/Error"
 
 // views
 
@@ -27,6 +28,7 @@ export default function Auth() {
           <Switch>
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
+            
        
           </Switch>
           <FooterSmall absolute />

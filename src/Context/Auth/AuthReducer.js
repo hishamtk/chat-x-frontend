@@ -1,6 +1,5 @@
 import {
   REGISTER_SUCCESS,
-
   REGISTER_FAIL,
   SET_LOADING,
   SET_USER,
@@ -8,7 +7,6 @@ import {
   LOGIN_SUCCESS,
   LOGOUT,
   LOGIN_FAIL,
-
   ALL_USERS,
 } from "../types";
 
@@ -31,24 +29,23 @@ const reducer = (state, action) => {
         ...state,
         isAuth: true,
         token: payload.token,
-        user:payload.user,
-        loading:false,
+        user: payload.user,
+        loading: false,
       };
     case SET_USER:
+      console.log(payload);
       return {
         ...state,
         user: payload,
         loading: false,
         isAuth: true,
-        userRole: payload.role,
       };
     case LOGOUT:
       return {
         user: null,
-        loading: true,
+        loading: false,
         isAuth: null,
         token: null,
-
       };
     case LOGIN_FAIL:
     case REGISTER_FAIL:
@@ -56,7 +53,6 @@ const reducer = (state, action) => {
         ...state,
         error: payload,
       };
-
 
     case ALL_USERS:
       return {

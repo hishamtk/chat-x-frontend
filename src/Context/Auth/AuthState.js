@@ -35,7 +35,7 @@ const AuthState = (props) => {
 
   const loadUser = async () => {
     try {
-      const res = await axios.get(`/api/auth/user`);
+      const res = await axios.get(`/api/user`);
       dispatch({ type: SET_USER, payload: res.data.info });
     } catch (error) {
       // dispatch({
@@ -73,14 +73,14 @@ const AuthState = (props) => {
   const userLogin = async (formData) => {
     try {
       setLoading();
-      const res = await axios.post(`${process.env.REACT_APP_APIURL}/api/auth/login`, formData);
+      const res = await axios.post(`/api/sessions`, formData);
       
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
-      setAuthToken(res.data.token);
-      loadUser();
+      setAuthToken(res.data.accessToken);
+      
     } catch (err) {
 
   

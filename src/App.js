@@ -1,4 +1,4 @@
-import React, { useContext , useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,39 +17,41 @@ import AlertState from "Context/Alert/AlertState";
 import PrivateRoute from "Utils/PrivateRoute";
 import RoomState from "Context/Room/RoomState";
 import setAuthToken from "Utils/setAuthToken";
+import Spinner from "components/Spinner/Spinner";
 
 const App = () => {
   const authContext = useContext(AuthContext);
   const { loadUser, resetLoading } = authContext;
 
   useEffect(() => {
-    const token = localStorage.getItem("jwtToken")
-    if(token){
+    const token = localStorage.getItem("jwtToken");
+    if (token) {
       setAuthToken(token);
       loadUser();
-    }else{
-      resetLoading()
+    } else {
+      resetLoading();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
       <AlertState>
-        <RoomState >
-        <Router>
-          <Switch>
-            <Route path="/" exact component={Landing} />
+        <RoomState>
+          <Router>
+            <Switch>
+              <Route path="/" exact component={Landing} />
+              {/* <Route path="/spinner" exact component={Spinner} /> */}
+              <Route path="/user" exact>
+                <PrivateRoute component={UserDashboard} />
+              </Route>
 
-            <Route path="/user" exact>
-              <PrivateRoute component={UserDashboard} />
-            </Route>
-
-            <Route path="/" component={Auth} />
-            {/* add redirect for first page */}
-            <Redirect from="*" to="/" />
-          </Switch>
-        </Router>
+              <Route exact path="/login" component={Auth} />
+              <Route exact path="/register" component={Auth} />
+              {/* add redirect for first page */}
+              <Redirect path="*" to="/" />
+            </Switch>
+          </Router>
         </RoomState>
       </AlertState>
     </>
