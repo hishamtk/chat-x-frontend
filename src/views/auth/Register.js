@@ -1,40 +1,39 @@
 import React, { useContext, useState } from "react";
-import {Link} from "react-router-dom"
+import { Link , Redirect } from "react-router-dom";
 
-import AuthContext from "Context/Auth/AuthContext"
+import AuthContext from "Context/Auth/AuthContext";
 import AlertContext from "Context/Alert/AlertContext";
+import Alert from "views/Alert";
 
 export default function Register() {
-  const alertContext = useContext(AlertContext)
+  const alertContext = useContext(AlertContext);
 
-  const authContext = useContext(AuthContext)
+  const authContext = useContext(AuthContext);
 
-  const intialState = {name:"",email:"",password:""}
+  const intialState = { name: "", email: "", password: "" };
 
-  const [form,setForm] = useState(intialState)
-  const {setAlert } = alertContext
-  const {userRegister} = authContext
-
-
+  const [form, setForm] = useState(intialState);
+  const { setAlert } = alertContext;
+  const { userRegister , isAuth } = authContext;
 
 
-  const handleChange = (e) =>{
-    setForm({...form,[e.target.name]:e.target.value})
+  if(isAuth){
+    return <Redirect to="/user" />
   }
 
-  const handleSubmit = (e) =>{
-    e.preventDefault()
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-    if(form.name == "" || form.email == ""||form.password == ""){
-      setAlert("All field should fill","red")
-      return
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (form.name === "" || form.email === "" || form.password === "") {
+      setAlert("All field should fill", "red");
+      return;
     }
-    userRegister(form)
-
-  }
-
-
-
+    userRegister(form);
+  };
 
   return (
     <>
@@ -45,15 +44,15 @@ export default function Register() {
               <div className="rounded-t mb-0 px-6 py-6">
                 <div className="text-center mb-3">
                   <h6 className="text-blueGray-500 text-base font-bold">
-                    Sign up 
+                    Sign up
                   </h6>
                 </div>
-                
+
                 <hr className="mt-6 border-b-1 border-blueGray-300" />
               </div>
+              <Alert />
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                <div className="text-blueGray-400 text-center mb-3 font-bold">
-                </div>
+                <div className="text-blueGray-400 text-center mb-3 font-bold"></div>
                 <form onSubmit={handleSubmit}>
                   <div className="relative w-full mb-3">
                     <label
@@ -66,7 +65,7 @@ export default function Register() {
                       type="text"
                       name="name"
                       onChange={handleChange}
-                      value = {form.name}
+                      value={form.name}
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Name"
                     />
@@ -82,7 +81,7 @@ export default function Register() {
                     <input
                       type="email"
                       name="email"
-                      onChange ={handleChange}
+                      onChange={handleChange}
                       value={form.email}
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
@@ -105,7 +104,7 @@ export default function Register() {
                       placeholder="Password"
                     />
                   </div>
-{/* 
+                  {/* 
                   <div>
                     <label className="inline-flex items-center cursor-pointer">
                       <input
@@ -153,7 +152,6 @@ export default function Register() {
                 </Link>
               </div>
             </div>
-
           </div>
         </div>
       </div>

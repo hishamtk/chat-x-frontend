@@ -3,6 +3,7 @@ import React, { useReducer } from "react";
 
 import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
+import setAuthToken from "Utils/setAuthToken";
 import {
 
   REGISTER_SUCCESS,
@@ -11,12 +12,12 @@ import {
   SET_USER,
   RESET_LOADING,
   LOGIN_FAIL,
-  CLEAR_SUCCESS,
+
   LOGIN_SUCCESS,
-  CLEAR_ERRORS,
+
   LOGOUT,
 } from "../types";
-import setAuthToken from "Utils/setAuthToken";
+
 
 const AuthState = (props) => {
   const InitialState = {
@@ -51,10 +52,13 @@ const AuthState = (props) => {
     try {
       setLoading();
       const res = await axios.post(`/api/registers`, formData);
+      
       dispatch({
         type: REGISTER_SUCCESS,
-        payload: res.data.info,
+        payload: res.data
       });
+
+      setAuthToken(res.data.accessToken)
     } catch (error) {
       dispatch({
         type: REGISTER_FAIL,
@@ -94,18 +98,7 @@ const AuthState = (props) => {
     dispatch({ type: LOGOUT });
   };
 
-  //clear error
-  const clearErrors = () => {
-    dispatch({
-      type: CLEAR_ERRORS,
-    });
-  };
-  //clear successs
-  const clearSuccess = () => {
-    dispatch({
-      type: CLEAR_SUCCESS,
-    });
-  };
+
   //setLoading
   const setLoading = () => {
     dispatch({
@@ -126,8 +119,7 @@ const AuthState = (props) => {
         ...state,
         userRegister,
         userLogin,
-        clearErrors,
-        clearSuccess,
+    
         logout,
         resetLoading,
         loadUser,

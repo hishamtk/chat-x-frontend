@@ -72,3 +72,13 @@
 .leftpx {
   left: 105px;
 }
+
+
+/* spinner css */
+
+.loader {
+  /* border-top-color: #3498db; */
+  border-top-color: rgb(40, 191, 123);
+  -webkit-animation: spinner 1.5s linear infinite;
+  animation: spinner 1.5s linear infinite;
+}
