@@ -11,6 +11,8 @@ import AlertContext from "Context/Alert/AlertContext";
 const RoomState = (props) => {
   const initialState = {
     rooms: null,
+    activeRoom:null,
+    
   };
 
   const [state, dispatch] = useReducer(RoomReducer, initialState);
@@ -21,8 +23,8 @@ const RoomState = (props) => {
   const loadRooms = async () => {
     try {
       const res = await axios.get(`/api/user/rooms`);
-      debugger;
-      dispatch({ type: LOAD_ROOM, payload: res.data });
+
+      dispatch({ type: LOAD_ROOM, payload: res.data.data });
     } catch (error) {
       console.log(error.response);
     }

@@ -6,7 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import UserDashboard from "views/UserDashboard";
+import User from "layouts/User";
 import Auth from "layouts/Auth.js";
 
 // views without layouts
@@ -42,8 +42,8 @@ const App = () => {
             <Switch>
               <Route path="/" exact component={Landing} />
               {/* <Route path="/spinner" exact component={Spinner} /> */}
-              <Route path="/user" exact>
-                <PrivateRoute component={UserDashboard} />
+              <Route path="/user" >
+                <PrivateRoute component={User} />
               </Route>
 
               <Route exact path="/login" component={Auth} />
