@@ -1,7 +1,41 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import {Link} from "react-router-dom"
 
+import AuthContext from "Context/Auth/AuthContext"
+import AlertContext from "Context/Alert/AlertContext";
+
 export default function Register() {
+  const alertContext = useContext(AlertContext)
+
+  const authContext = useContext(AuthContext)
+
+  const intialState = {name:"",email:"",password:""}
+
+  const [form,setForm] = useState(intialState)
+  const {setAlert } = alertContext
+  const {userRegister} = authContext
+
+
+
+
+  const handleChange = (e) =>{
+    setForm({...form,[e.target.name]:e.target.value})
+  }
+
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+
+    if(form.name == "" || form.email == ""||form.password == ""){
+      setAlert("All field should fill","red")
+      return
+    }
+    userRegister(form)
+
+  }
+
+
+
+
   return (
     <>
       <div className="container mx-auto px-4 h-full">
@@ -20,7 +54,7 @@ export default function Register() {
               <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
                 <div className="text-blueGray-400 text-center mb-3 font-bold">
                 </div>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="relative w-full mb-3">
                     <label
                       className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -29,7 +63,10 @@ export default function Register() {
                       Name
                     </label>
                     <input
-                      type="email"
+                      type="text"
+                      name="name"
+                      onChange={handleChange}
+                      value = {form.name}
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Name"
                     />
@@ -44,6 +81,9 @@ export default function Register() {
                     </label>
                     <input
                       type="email"
+                      name="email"
+                      onChange ={handleChange}
+                      value={form.email}
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
                     />
@@ -58,11 +98,14 @@ export default function Register() {
                     </label>
                     <input
                       type="password"
+                      name="password"
+                      onChange={handleChange}
+                      value={form.password}
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
                     />
                   </div>
-
+{/* 
                   <div>
                     <label className="inline-flex items-center cursor-pointer">
                       <input
@@ -81,12 +124,12 @@ export default function Register() {
                         </a>
                       </span>
                     </label>
-                  </div>
+                  </div> */}
 
                   <div className="text-center mt-6">
                     <button
                       className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                      type="button"
+                      type="submit"
                     >
                       Create Account
                     </button>
