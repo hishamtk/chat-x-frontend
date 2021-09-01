@@ -1,19 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+
+import Multiselect from "multiselect-react-dropdown";
 
 const CardAddChat = () => {
+  const initialState = { private: true };
+  const [state, setState] = useState({});
+
   return (
     <>
       <div className=" w-96 flex flex-col bg-blueGray-200 ">
         <h1 className="text-2xl p-3  border-b">Private Chat</h1>
 
+        {/* <div className=" flex flex-row space-x-5 mx-5 justify-around">
+          {state.private ? (<button className=" px-3 bg-black-squeeze-900 rounded-3xl py-2 flex-1 my-3 text-white-50">
+            Private
+          </button>)
+          : (<button className="px-3 bg-black-squeeze-900 rounded-3xl py-2 my-3 flex-1 text-white-50">
+          Group
+        </button>)}
+        </div> */}
+
         <div className="flex-none  pb-2  ">
           <form class="pt-2 relative mx-auto w-full px-2 text-gray-600 flex items-center">
-            <input
-              class="px-3 bg-white h-10 rounded-full text-xs focus:outline-none w-full pr-10"
-              type="search"
-              name="search"
-              placeholder="Search for messages or users.."
+            <Multiselect
+              displayValue="key"
+              onRemove={function noRefCheck() {}}
+              onSelect={function noRefCheck() {}}
+              options={[
+                {
+                  cat: "Group 1",
+                  key: "Option 1",
+                },
+                {
+                  cat: "Group 1",
+                  key: "Option 2",
+                },
+                {
+                  cat: "Group 1",
+                  key: "Option 3",
+                },
+                {
+                  cat: "Group 2",
+                  key: "Option 4",
+                },
+                {
+                  cat: "Group 2",
+                  key: "Option 5",
+                },
+                {
+                  cat: "Group 2",
+                  key: "Option 6",
+                },
+                {
+                  cat: "Group 2",
+                  key: "Option 7",
+                },
+              ]}
+              selectionLimit={1}
             />
+          
             <div type="none" class="absolute right-0 top-0 mt-4 mr-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -30,33 +75,11 @@ const CardAddChat = () => {
                 />
               </svg>
             </div>
+            
           </form>
-        </div>
-        <div className="flex-auto overflow-y-auto ">
-          {[...Array(14)].map((x, i) => (
-            <div className="flex mx-3 relative my-1">
-              
-              <div className="flex  flex-1 rounded-md bg-white-50 justify-center items-center  flex-row p-2">
-                <div className="w-20 flex-none h-20 relative">
-                  <img
-                    className="p-1 rounded-full"
-                    src={require("assets/img/team-1-800x800.jpg").default}
-                    alt="..."
-                  />
-                  <div className="absolute w-3 h-3 bottom-1 right-4 rounded-full bg-emerald-500"></div>
-                </div>
-                <div className="  p-3 flex-auto flex justify-start space-y-2 flex-col ">
-                  <div className=" flex flex-row items-center">
-                    <h1 className="flex-auto tracking-wide  text-base">
-                      Amal jyoti
-                    </h1>
-                   
-                  </div>
-                 
-                </div>
-              </div>
-            </div>
-          ))}
+      <div className="flex mx-5 mt-5">
+      <button className=" px-3 bg-black-squeeze-900 rounded-3xl py-2 my-3 flex-1 text-white-50">create</button>
+      </div>
         </div>
       </div>
     </>

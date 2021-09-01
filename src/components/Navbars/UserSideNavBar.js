@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "Context/Auth/AuthContext";
 
 const UserSideNavBar = () => {
@@ -10,20 +11,22 @@ const UserSideNavBar = () => {
     <>
       <div className="w-14 flex bg-teal-500 flex-col justify-between  items-center">
         <div className="text-center">
-          <img
-            className="p-2"
-            src={require("assets/img/chat.png").default}
-            alt="..."
-          />
+          <Link to="/user">
+            <img
+              className="p-2"
+              src={require("assets/img/chat.png").default}
+              alt="..."
+            />
+          </Link>
         </div>
         <div className="flex flex-auto flex-col justify-center items-center space-y-10">
-          <a href="/">
+          <Link to="/user/add">
             <img
               className="p-2"
               src={require("assets/img/person_black.svg").default}
               alt="..."
             />
-          </a>{" "}
+          </Link  >
           <a href="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
